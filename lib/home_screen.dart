@@ -1,3 +1,5 @@
+// ignore_for_file: use_super_parameters, deprecated_member_use
+
 import 'package:color_screen/color_screen.dart';
 import 'package:color_screen/component.dart';
 import 'package:flutter/material.dart';
@@ -85,10 +87,19 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 )
-                .toList(),
+                .toList(), 
           ),
         ),
       ),
     );
   }
 }
+
+
+
+
+
+
+
+
+

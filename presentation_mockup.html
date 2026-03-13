@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Presentation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #f0f2f5;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .slide {
+            width: 1080px;
+            height: 1350px;
+            background: white;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Scale for preview if needed, but we want full res for screenshot */
+            transform-origin: top center;
+        }
+
+        .slide-bg-1 {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .slide-bg-2 {
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+        }
+
+        /* Phone Frame */
+        .phone-frame {
+            width: 375px; /* iPhone width approx */
+            height: 812px;
+            background: white;
+            border-radius: 40px;
+            border: 12px solid #333;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            margin-top: 100px;
+        }
+
+        .notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 30px;
+            background: #333;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            z-index: 10;
+        }
+
+        /* App UI - Home */
+        .app-header {
+            height: 60px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-top: 30px; /* status bar space */
+        }
+        
+        .app-title-container {
+            /* Simulating the gradient text container in code */
+             /* The code says container with gradient bg, child text white */
+             padding: 5px 15px;
+             border-radius: 5px;
+             background: linear-gradient(to bottom right, rgba(0,0,0,0.9), rgba(0,0,0,0.5));
+        }
+
+        .app-title {
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .grid-container {
+            padding: 10px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding-top: 20px;
+            overflow-y: hidden; /* static mock */
+        }
+
+        .color-box {
+            height: 100px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 4px rgba(128,128,128,0.5);
+        }
+
+        /* Slide Content */
+        .slide-title {
+            font-size: 60px;
+            font-weight: 700;
+            color: #333;
+            margin-top: 80px;
+            text-align: center;
+        }
+        
+        .slide-subtitle {
+            font-size: 30px;
+            color: #666;
+            margin-top: 10px;
+            text-align: center;
+            max-width: 80%;
+        }
+
+        /* Footer/Branding */
+        .footer {
+            position: absolute;
+            bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #ddd; /* User avatar placeholder */
+        }
+        .footer-text {
+            font-size: 24px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        /* Decoration */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.6;
+            z-index: 0;
+        }
+        .blob-1 { width: 400px; height: 400px; background: #a18cd1; top: -100px; left: -100px; }
+        .blob-2 { width: 300px; height: 300px; background: #fbc2eb; bottom: 100px; right: -50px; }
+
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1: Cover -->
+    <div class="slide slide-bg-1" id="slide1">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        
+        <div style="z-index: 1; text-align: center; margin-top: 300px;">
+            <h1 style="font-size: 100px; margin: 0; color: #2c3e50;">Color Screen</h1>
+            <p style="font-size: 40px; color: #555; margin-top: 20px;">Flutter Application</p>
+            <div style="margin-top: 50px; background: #333; color: white; padding: 20px 60px; border-radius: 50px; font-size: 30px; display: inline-block;">
+                App Showcase
+            </div>
+        </div>
+
+        <!-- Phone peeking from bottom -->
+        <div class="phone-frame" style="position: absolute; bottom: -400px; left: 50%; transform: translateX(-50%) rotate(-10deg); height: 800px;">
+           <div class="notch"></div>
+           <div class="app-header">
+               <div class="app-title-container">
+                   <span class="app-title">Color Screen</span>
+               </div>
+           </div>
+           <div class="grid-container" id="grid-cover">
+               <!-- JS will populate -->
+           </div>
+        </div>
+    </div>
+
+    <!-- Slide 2: Home Screen -->
+    <div class="slide" id="slide2">
+        <h2 class="slide-title">Home Screen</h2>
+        <p class="slide-subtitle">A clean grid layout displaying a curated palette of colors.</p>
+        
+        <div class="phone-frame">
+            <div class="notch"></div>
+            <div class="app-header">
+                <div class="app-title-container">
+                    <span class="app-title">Color Screen</span>
+                </div>
+            </div>
+            <div class="grid-container" id="grid-main">
+                <!-- JS will populate -->
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-text">Mariam Awny</div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Interactive Detail -->
+    <div class="slide slide-bg-2" id="slide3">
+        <h2 class="slide-title">Detail View</h2>
+        <p class="slide-subtitle">Full-screen immersive color experience on tap.</p>
+
+        <div style="display: flex; gap: 50px; justify-content: center; width: 100%;">
+            <!-- Phone 1 -->
+            <div class="phone-frame" style="transform: scale(0.9);">
+                <div class="notch"></div>
+                <!-- Color Detail Deep Purple -->
+                <div style="width: 100%; height: 100%; background: #432b85;"></div>
+            </div>
+            
+            <!-- Phone 2 -->
+            <div class="phone-frame" style="transform: scale(0.9);">
+                <div class="notch"></div>
+                <!-- Color Detail Light Purple -->
+                <div style="width: 100%; height: 100%; background: #9867e0;"></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-text">Mariam Awny</div>
+        </div>
+    </div>
+
+    <script>
+        const colors = [
+            'black',
+            'rgb(27, 12, 69)',
+            'rgb(45, 24, 81)',
+            'rgb(59, 32, 105)',
+            'rgb(67, 43, 133)',
+            'rgb(78, 59, 132)',
+            '#7241ba',
+            '#9867e0',
+            '#58417a',
+            '#624d82',
+            '#5c4b75',
+            '#685880',
+            '#655a75',
+            '#5e5769',
+            '#6c6773',
+            '#77767a',
+            '#9b999e',
+            '#c7c4cc'
+        ];
+
+        function populateGrid(elementId) {
+            const container = document.getElementById(elementId);
+            colors.forEach(color => {
+                const div = document.createElement('div');
+                div.className = 'color-box';
+                div.style.backgroundColor = color;
+                container.appendChild(div);
+            });
+        }
+
+        populateGrid('grid-cover');
+        populateGrid('grid-main');
+
+    </script>
+</body>
+</html>
